@@ -1,0 +1,13 @@
+{% set horizon = salt['grains.filter_by']({
+    'Debian': {
+      'host_allow': '["*"]',
+      'host': 'localhost',
+      'roletwo': 'member'
+    },
+    'Redhat': {
+      'host_allow': '["*"]',
+      'host': 'localhost',
+      'roletwo': 'member'
+    },
+},merge = salt['pillar.get']('horizon.lookup'))
+%}
