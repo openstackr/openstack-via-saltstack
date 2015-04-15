@@ -1,0 +1,34 @@
+{% set mysql =  salt['grains.filter_by']({
+    'RedHat': {
+        'dbhost': "\'%'",
+        'dbname': 'keystone',
+        'username': 'keystone',
+        'password': 'keystone',
+        'conn_host': 'db.fdc.com',
+        'conn_user': 'root',
+        'conn_pass': 'root',
+        'privileges': 'all privileges'
+        
+    },
+    'Debian': {
+        'dbhost': "\'%'",
+        'dbname': 'keystone',
+        'username': 'keystone',
+        'password': 'keystone',
+        'conn_host': 'db.fdc.com',
+        'conn_user': 'root',
+        'conn_pass': 'root',
+        'privileges': 'all privileges'
+    },
+},merge=salt['pillar.get']('mysql:lookup')) 
+%}
+
+{% set default =  salt['grains.filter_by']({
+    'RedHat': {
+        'admin_token': 'admin',
+    },
+    'Debian': {
+        'admin_token': 'x3ytsgdjdyeje',
+    },
+},merge=salt['pillar.get']('default:lookup'))
+%}

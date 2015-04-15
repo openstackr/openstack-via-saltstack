@@ -1,0 +1,19 @@
+keystone:
+  admin_token: admin
+  public_bind_host: 0.0.0.0 
+  admin_bind_host: 0.0.0.0
+  admin_port: 35357 
+  public_port: 5000 
+  public_endpoint: http://controller:5000/v2.0/users 
+  admin_endpoint: http://controller:35357/v2.0/users
+
+mysql:
+    conn_host: db.fdc.com
+    conn_user: root
+    conn_pass: root
+    username: keystone
+    password: keystone
+    dbhost: localhost
+    dbname: keystone
+    dbhost: "\'%'"
+    privileges: all privileges
