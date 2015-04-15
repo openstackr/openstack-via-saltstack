@@ -1,0 +1,4 @@
+include:
+  - cinder.storage.install
+  - cinder.storage.config
+  - cinder.storage.start

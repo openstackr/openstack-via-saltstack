@@ -1,0 +1,64 @@
+##For cinder - mysql service
+{% set mysql =  salt['grains.filter_by']({
+    'Debian': {
+	'host_perm': "\'%'",
+	'dbhost': "localhost",
+        'dbname': 'cinder',
+        'username': 'cinder',
+        'password': 'cinder',
+        'conn_host': 'localhost',
+        'conn_user': 'root',
+        'conn_pass': 'mysql',
+        'privileges': 'all privileges'
+    },
+    'RedHat': {
+	'host_perm': "\'%'",
+	'dbhost': "localhost",
+        'dbname': 'cinderdb',
+        'username': 'cinderdb',
+        'password': 'cinderdb',
+        'conn_host': 'localhost',
+        'conn_user': 'root',
+        'conn_pass': 'mysql',
+        'privileges': 'all privileges'
+    },
+}, merge = salt['pillar.get']('mysql.lookup')) %}
+
+
+##For cinder configurations 
+
+{% set cinder_map =  salt['grains.filter_by']({
+    'Debian': {
+        'rpc_backend': 'rabbit',
+        'rabbit_host': 'localhost',
+	'rabbit_port': '5672',
+	'cinder_host': 'localhost',
+        'keystone_host': 'localhost',
+        'tenant_name': 'service',
+        'username': 'cinder',
+        'password': 'cinder'
+    },
+    'RedHat': {
+        'rpc_backend': 'rabbit',
+        'rabbit_host': 'localhost',
+        'rabbit_port': '5672',
+        'cinder_host': 'localhost',
+        'keystone_host': 'localhost',
+        'tenant_name': 'service',
+        'username': 'cinder',
+        'password': 'cinder'
+    },
+}, merge = salt['pillar.get']('cinder.lookup')) %}
+
+
+## For endpoint creation
+
+{% set endpoint =  salt['grains.filter_by']({
+    'Debian': {
+        'controller': 'controller'
+    },
+    'RedHat': {
+        'controller': 'controller'
+    },
+}, merge = salt['pillar.get']('endpoint.lookup')) %}
+
