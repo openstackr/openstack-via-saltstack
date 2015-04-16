@@ -14,7 +14,7 @@ then
 salt $RABBITMQ_MASTER grains.setval openstack-id $OPENSTACK_ID
 salt $RABBITMQ_MASTER grains.setval role rabbitmq 
 salt $RABBITMQ_MASTER grains.setval rabbitmq-is-master true 
-salt $RABBITMQ_MASTER grains.setval cluster-id $RABBITMQ_CLUSTER_ID
+salt $RABBITMQ_MASTER grains.setval rabbitmq-cluster-id $RABBITMQ_CLUSTER_ID
 else
 echo "RabbitMQ Master is not Set"
 fi
@@ -26,7 +26,7 @@ then
 salt $RABBITMQ_SLAVE grains.setval openstack-id $OPENSTACK_ID
 salt $RABBITMQ_SLAVE grains.setval role rabbitmq
 salt $RABBITMQ_SLAVE grains.setval rabbitmq-is-master false
-salt $RABBITMQ_SLAVE grains.setval cluster-id $RABBITMQ_CLUSTER_ID
+salt $RABBITMQ_SLAVE grains.setval rabbitmq-cluster-id $RABBITMQ_CLUSTER_ID
 else
 echo "RabbitMQ Slave is not Set"
 fi
