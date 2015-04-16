@@ -2,25 +2,13 @@ openstack:
   mysql:
     user: root
     password: root
-    dbhost: 172.25.204.21
+    dbhost: db.yourdomain.com
     allow_host: '"%"'
     privileges: ALL PRIVILEGES
 
   token:
     conn_token: admin
 
-  neutron:
-    name: neutron
-    password: neutronpass
-
-  horizon:
-    host: localhost
-    host_allow: '["*"]'
-
-  cinder:
-    name: cinder
-    password: cinder_pass
-    host: controller ##In Case of Seperate Controller for cinder##
 
   keystone:
     name: keystone
