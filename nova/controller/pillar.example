@@ -1,0 +1,31 @@
+openstack:
+  mysql:
+    conn_user: root
+    conn_pass: root
+    dbhost: 127.0.0.1
+    allow_host: '"%"'
+    privileges: ALL PRIVILEGES
+
+  token:
+    conn_token: admin
+	
+  rabbitmq:
+    password: rabbitpass
+    host: raja
+    rpc_backend: rabbit
+    rabbit_port: 5672
+	
+   nova:
+    name: nova
+    password: nova_pass
+    email: nova@test.com
+    host: controller ##In Case of Seperate Controller for nova##
+    vnc_port: 6080
+    service:
+      controller:
+        nova_api: openstack-nova-api
+        nova_cert: openstack-nova-cert
+        nova_auth: openstack-nova-consoleauth
+        nova_scheduler: openstack-nova-scheduler
+        nova_conductor: openstack-nova-conductor
+        nova_novncproxy: openstack-nova-novncproxy

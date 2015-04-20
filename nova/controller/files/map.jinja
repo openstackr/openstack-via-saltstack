@@ -1,0 +1,43 @@
+{% set mysql =  salt['grains.filter_by']({
+    'RedHat': {
+        'allow_host': "\'%'",
+        'dbname': 'nova',
+        'username': 'nova',
+        'password': 'nova',
+        'dbhost': 'localhost',
+        'conn_user': 'root',
+        'conn_pass': 'root',
+        'privileges': 'all privileges'
+    },
+    'Debian': {
+        'allow_host': "\'%'",
+        'dbname': 'nova',
+        'username': 'nova',
+        'password': 'nova',
+        'dbhost': 'localhost',
+        'conn_user': 'root',
+        'conn_pass': 'root',
+        'privileges': 'all privileges'
+    },
+
+},merge=salt['pillar.get']('openstack:mysql'))
+%} 
+
+{% set default =  salt['grains.filter_by']({
+    'RedHat': {
+        'conn_token': 'admin',
+        'host': 'localhost',
+        'password': 'rabbitmqpass',
+        'rpc_backend': 'rabbit',
+        'email': 'nova@test.com'
+    },
+    'Debian': {
+        'conn_token': 'x3ytsgdjdyeje',
+        'host': 'localhost',
+        'password': 'rabbitmqpass',
+        'rpc_backend': 'rabbit', 
+        'email': 'nova@test.com'
+    },
+},merge=salt['pillar.get']('openstack:rabbitmq'))
+%}
+
