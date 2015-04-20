@@ -1,7 +1,7 @@
 openstack:
   mysql:
     conn_user: root
-    conn_pass: root
+    conn_pass: somestrongpass
     dbhost: 127.0.0.1
     allow_host: '"%"'
     privileges: ALL PRIVILEGES
@@ -11,7 +11,7 @@ openstack:
 	
   rabbitmq:
     password: rabbitpass
-    host: raja
+    host: rabbitpass
     rpc_backend: rabbit
     rabbit_port: 5672
 	

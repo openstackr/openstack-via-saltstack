@@ -64,7 +64,7 @@ openstack-nova-api,openstack-nova-cert,openstack-nova-consoleauth,openstack-nova
 #keystone_user
 This state will create the below stuffs
 
-* create keystone user and map under admin tenant admin role
+* create nova user and map under admin tenant admin role
 * create nova service
 * create nova endpoint
 
