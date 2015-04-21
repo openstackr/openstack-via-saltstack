@@ -75,7 +75,7 @@ make sure you have append the below data in your pillar file
 openstack:
   mysql:
     conn_user: root
-    conn_pass: root
+    conn_pass: strongpass
     dbhost: 127.0.0.1
     allow_host: '"%"'
     privileges: ALL PRIVILEGES
@@ -85,7 +85,7 @@ openstack:
 	
   rabbitmq:
     password: rabbitpass
-    host: raja
+    host: rabbithost
     rpc_backend: rabbit
     rabbit_port: 5672
 	
