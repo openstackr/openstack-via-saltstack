@@ -1,0 +1,58 @@
+{% set mysql = salt['grains.filter_by']({
+   'RedHat': {
+        'allow_host': '%',
+        'dbname': 'neutron',
+        'dbhost': 'localhost',
+        'conn_user': 'root',
+        'conn_pass': 'mysql',
+        'privileges': 'all privileges'
+    },
+    'Debian': {
+        'allow_host': '%',
+        'dbname': 'neutron',
+        'dbhost': 'localhost',
+        'conn_user': 'root',
+        'conn_pass': 'mysql',
+        'privileges': 'all privileges'
+    },
+
+}, merge=salt['pillar.get']('openstack:mysql')) %} 
+
+{% set neutron = salt['grains.filter_by']({
+   'RedHat': {
+        'username': 'neutron',
+        'password': 'neutron',
+      
+    },
+    'Debian': {
+        'username': 'neutron',
+        'password': 'neutron',
+    },
+
+}, merge=salt['pillar.get']('openstack:neutron')) %}
+
+{% set rabbit =  salt['grains.filter_by']({
+   'RedHat': {
+        'rpc_backend': 'rabbit',
+        'rabbit_host': 'rabbithost',
+        'rabbit_password': 'rabbitpass',
+    },
+  'Debian': {
+        'rpc_backend': 'rabbit',
+        'rabbit_host': 'rabbithost',
+        'rabbit_password': 'rabbitpass',
+    },
+},merge=salt['pillar.get']('openstack:rabbitmq')) %}
+
+{% set nova = salt['grains.filter_by']({
+   'RedHat': {
+        'username': 'nova',
+        'password': 'nova',
+
+    },
+    'Debian': {
+        'username': 'nova',
+        'password': 'nova',
+    },
+
+}, merge=salt['pillar.get']('openstack:nova')) %}
