@@ -1,0 +1,17 @@
+openstack:
+  nova:
+    compute:
+      my_ip: "will fetch from grain data"
+      vnc_enabled: True
+      vncserver_listen: 0.0.0.0
+      vncserver_proxyclient_address:  "will fetch from grain data"
+      novncproxy_base_url: http://controller:6080/vnc_auto.html
+      glance_host: controller
+      virt_type: kvm
+      service:
+        libvirt: libvirtd
+        novacompute: openstack-nova-compute    
+
+
+
+

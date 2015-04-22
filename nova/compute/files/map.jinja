@@ -1,0 +1,31 @@
+{% set default =  salt['grains.filter_by']({
+    'RedHat': {
+        'conn_token': 'admin',
+        'host': 'localhost',
+        'password': 'rabbitmqpass',
+        'rpc_backend': 'rabbit',
+        'my_ip': "localhost",
+        'vnc_enabled':'True',
+        'vncserver_listen': '0.0.0.0',
+        'vncserver_proxyclient_address':  "will fetch from grain data",
+        'novncproxy_base_url': 'controller',
+        'glance_host': 'controller',
+        'virt_type': 'kvm' 
+    },
+    'Debian': {
+        'conn_token': 'admin',
+        'host': 'localhost',
+        'password': 'rabbitmqpass',
+        'rpc_backend': 'rabbit',
+        'my_ip': "localhost",
+        'vnc_enabled': 'True',
+        'vncserver_listen': '0.0.0.0',
+        'vncserver_proxyclient_address':  "will fetch from grain data",
+        'novncproxy_base_url': 'http://controller:6080/vnc_auto.html',
+        'glance_host': 'controller',
+        'virt_type': 'kvm'
+
+    },
+},merge=salt['pillar.get']('openstack:rabbitmq'))
+%}
+
