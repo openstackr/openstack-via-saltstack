@@ -26,7 +26,7 @@ example:
 
 setting roles via Cli:
 ```sh
-$ salt 'yourminion'  grains.setval  role novacontroller
+$ salt 'yourminion'  grains.setval  role novacompute
 ```
 setting roles via  salt-cloud map file:
 
