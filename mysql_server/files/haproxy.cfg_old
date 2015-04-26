@@ -20,10 +20,11 @@ defaults
 
 
 listen galera_cluster
-  bind haproxy:3306
+  bind {{ grains['host'] }}:3306
   balance source
   option  httpchk
-{% for key,value  in salt ['mine.get']('G@mysql-cluster-id:' + grains['mysql-cluster-id'] + ' and G@role:mysql','grains.items','compound').items() %}
-server controller  {{ loop.index }} {{ value['ipv4'][1] }}:3306 check port 9200 inter 2000 rise 2 fall 5
+{% for key,value  in salt ['mine.get']('G@openstack-id:' + grains['openstack-id'] + ' and G@role:mysql','grains.items','compound').items() %}
+server MySQL{{ loop.index }} {{ value['ipv4'][1] }}:3306 check port 9200 inter 2000 rise 2 fall 5
 {%- endfor %}
+
 

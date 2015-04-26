@@ -7,5 +7,3 @@ mysql_install:
       - MariaDB-Galera-server
       - galera
       - rsync
-    - require:
-      - sls : mysql_server.repo

@@ -5,7 +5,7 @@
 mysql_configure:
   file:
     - managed
-    - name: {{ mysql.conf }}
+    - name: {{ mysql.conf_file }}
     - source: salt://mysql_server/files/cluster.cnf
     - makedirs: True
     - replace: True

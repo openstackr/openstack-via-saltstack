@@ -1,3 +1,5 @@
+{% if 'role' in grains and grains['role'] == 'mysql' %}
+
 include:
   - mysql_server.stop
 
@@ -22,3 +24,5 @@ mysql_restart:
     {%- endif %}
     - require:
       - sls : mysql_server.stop
+
+{% endif %}

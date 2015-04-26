@@ -19,3 +19,4 @@ haproxy_start:
   service:
     - running
     - name: haproxy
+
