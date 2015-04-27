@@ -5,12 +5,13 @@ rabbitmq:
     - sls:
         - rabbitmq.install
         - rabbitmq.start
+
+
+rabbitmq_slave:
+  salt.state:
+    - tgt: 'G@rabbitmq-is-master:False and G@role:rabbitmq'
+    - tgt_type: compound
+    - sls:
         - rabbitmq.configure
-    {% if 'rabbitmq-cluster-id' in grains %}
     - require:
-      - tgt: 'G@rabbitmq-is-master:True and G@role:rabbitmq'
-      - tgt_type: compound
-      - sls:
-        - rabbitmq.install
-        - rabbitmq.start 
-    {% endif %}
+      - salt: rabbitmq

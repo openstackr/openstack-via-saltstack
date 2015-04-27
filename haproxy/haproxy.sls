@@ -13,7 +13,6 @@ haproxy_conf:
 
 
 haproxy_start:
-  service.running:
-    - name: haproxy
-    - enable: True
-    - reload: True
+  cmd:
+    - run
+    - name: service haproxy restart

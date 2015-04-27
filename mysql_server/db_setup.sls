@@ -10,7 +10,6 @@ root_change_password:
     - name: {{ mysql.root_user }} 
     - password: {{ mysql.root_password }} 
     - connection_user: root
-    - connection_pass: mysql
 root_newuser:
   mysql_user.present:
     - name: {{ mysql.conn_user }} 

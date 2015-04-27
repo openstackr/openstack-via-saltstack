@@ -11,7 +11,7 @@ test_user:
     - password: test 
     - connection_host: {{ salt['grains.get']('ipv4')[1] }}
     - connection_user: {{ mysql.conn_user }} 
-    - connection_pass: {{ mysql.root_password }} 
+    - connection_pass: {{ mysql.conn_password }} 
   mysql_grants.present:
     - grant: {{ mysql.privileges }} 
     - database: '*.*'
@@ -20,7 +20,7 @@ test_user:
     - grant_option: True
     - connection_host: {{ salt['grains.get']('ipv4')[1] }}
     - connection_user: {{ mysql.conn_user }}
-    - connection_pass: {{ mysql.root_password }}
+    - connection_pass: {{ mysql.conn_password }}
   require:
     - pkg : MySQL-python 
 {% endif %}
